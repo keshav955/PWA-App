@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SwUpdate } from '@angular/service-worker';
 import { ActivatedRoute } from '@angular/router';
+import { OneSignal } from 'onesignal-ngx';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +17,11 @@ export class AppComponent implements OnInit {
     private http: HttpClient,
     private swUpdate: SwUpdate,
     private activatedRoute: ActivatedRoute,
+    private oneSignal:OneSignal
   ) {
-
+    this.oneSignal.init({
+      appId: "2c5a5061-d42e-43d3-b7ef-edef557b13ac",
+ });
   }
   ngOnInit(): void {
     console.log("App component initialized")
