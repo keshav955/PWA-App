@@ -21,6 +21,7 @@
     "@angular/service-worker": "^16.1.0",
     "angular-http-server": "^1.12.0",
     "http-server": "^14.1.1",
+    "onesignal-ngx": "^2.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
