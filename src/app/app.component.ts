@@ -21,7 +21,6 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     console.log("App component initialized")
-
     this.UiUpdate();
     this.http.get("https://hub.dummyapis.com/employee?noofRecords=10&idStarts=1").subscribe(data => {
       this.responseData = data;
@@ -32,11 +31,12 @@ export class AppComponent implements OnInit {
     }
     this.activatedRoute.queryParamMap.subscribe((params) => {
       let storeValue = params.get('store');
+      let versionParam = params.get('version');
       if (storeValue !== null) {
         sessionStorage.setItem('store', storeValue);
       }
-      if (storeValue !== null) {
-        sessionStorage.setItem('version', storeValue);
+      if (versionParam !== null) {
+        sessionStorage.setItem('version', versionParam);
       }
       this.checkPWA();
     });
@@ -44,19 +44,18 @@ export class AppComponent implements OnInit {
 
   queryStringParams() { //check there if query strings are there then one by one take in loop and append in one url
     let queryString = '';
-  this.activatedRoute.queryParamMap.subscribe((params) => {
-    params.keys.forEach((key, index) => {
-      const value = params.get(key); // Use get method to retrieve the parameter value
-      const splitChar = index === 0 ? '?' : '&';
-      queryString += `${splitChar}${key}=${value}`;
+    this.activatedRoute.queryParamMap.subscribe((params) => {
+      params.keys.forEach((key, index) => {
+        const value = params.get(key); // Use get method to retrieve the parameter value
+        const splitChar = index === 0 ? '?' : '&';
+        queryString += `${splitChar}${key}=${value}`;
+      });
     });
-  });
   console.log(queryString);
   return queryString;
   }
 
   checkPWA() {
-    debugger
     var properties = {
       Type: 'customLog',
       Name: 'pwa',
