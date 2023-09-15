@@ -1,10 +1,37 @@
-<h1>Angular PWA  version v-1</h1>
-<img src="../assets/images/moon.jpg"/>
-<h2>User Name</h2>
-<p *ngFor="let data of responseData">
-  {{data.firstName}} 
+<div class="d-flex justify-content-center mt-4">
+  <div class="col-md-7 text-center">
+    <h1>Angular PWA App - Demo</h1>
+    <h3>App UI version No- 1</h3>
+    <div class="container">
+      <div class="row">
+        <div class="col align-self-start">
+          <b>Demo User Names</b>
+          <table class="table mt-3">
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">First Name</th>
 
-</p>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of responseData; index as i">
+                <th scope="row">{{i+1}}</th>
+                <th scope="row">{{data.firstName}}</th>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col align-self-center">
+          <img class="mt-5 demo-image" src="../assets/images/sun.jpg" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
 
 <router-outlet></router-outlet>
-
