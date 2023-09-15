@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SwUpdate } from '@angular/service-worker';
+import { OneSignal } from 'onesignal-ngx';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +14,12 @@ export class AppComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private swUpdate: SwUpdate
+    private swUpdate: SwUpdate,
+    private oneSignal:OneSignal
   ) {
-
+    this.oneSignal.init({
+      appId: "2c5a5061-d42e-43d3-b7ef-edef557b13ac",
+ });
   }
   ngOnInit(): void {
     console.log("App component initialized")
